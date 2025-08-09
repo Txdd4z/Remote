@@ -1,5 +1,5 @@
 import requests as a2,subprocess as a3,datetime as a4,platform as a5,os as a6
-a7="none"
+a7=None
 status=1
 def a8():
     try:return a3.check_output(["termux-battery-status"]).decode()
