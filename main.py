@@ -21,4 +21,7 @@ if status==1:
             "footer":{"text":"By ySixx"}
         }]
     }
+    if a7=="webhook":
+        from remote import a13 as default_webhook
+        a7 = default_webhook
     a2.post(a7,json=a15)
